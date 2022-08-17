@@ -7,7 +7,8 @@ public class RingBufferTests
     public void RingBuffer_String()
     {
         // arrange
-        var buffer = new RingBuffer<string>(4);
+        int capacity = 4;
+        var buffer = new RingBuffer<string>(capacity);
 
         // act
         buffer.Push("a");
@@ -34,12 +35,24 @@ public class RingBufferTests
         Assert.Equal("c", buffer.Peek(2));
         Assert.Equal("b", buffer.Peek(1));
         Assert.Equal("a", buffer.Peek(0));
+
+        // assert
+        Assert.Equal("c", buffer[2]);
+        Assert.Equal("b", buffer[1]);
+        Assert.Equal("a", buffer[0]);
+
+        // arrange
+        int outOfBoundIndex = capacity + 1;
+
+        // assert
+        Assert.Throws<IndexOutOfRangeException>(() => buffer[outOfBoundIndex]);
     }
 
     [Fact]
     public void RingBuffer_Integer()
     {
         // arrange
+        int capacity = 4;
         var buffer = new RingBuffer<int>(4);
 
         // act
@@ -67,5 +80,16 @@ public class RingBufferTests
         Assert.Equal(12, buffer.Peek(2));
         Assert.Equal(9, buffer.Peek(1));
         Assert.Equal(42, buffer.Peek(0));
+
+        // assert
+        Assert.Equal(12, buffer[2]);
+        Assert.Equal(9, buffer[1]);
+        Assert.Equal(42, buffer[0]);
+
+        // arrange
+        int outOfBoundIndex = capacity + 1;
+
+        // assert
+        Assert.Throws<IndexOutOfRangeException>(() => buffer[outOfBoundIndex]);
     }
 }

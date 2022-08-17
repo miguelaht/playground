@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "DataStructures\DataStructures.csproj", "{8E57DED7-218B-4E5A-9361-4F6C212D105B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "DataStructures\DataStructures.csproj", "{1F923903-5378-4B94-8AAE-CC3B90331C90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructuresTests", "DataStructuresTests\DataStructuresTests.csproj", "{7307D38A-D638-4D22-B0F1-46D63E840362}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructuresTests", "DataStructuresTests\DataStructuresTests.csproj", "{755D36AB-2F1C-4C97-BD9F-BCE5F1DF5EA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,13 +16,13 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8E57DED7-218B-4E5A-9361-4F6C212D105B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E57DED7-218B-4E5A-9361-4F6C212D105B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E57DED7-218B-4E5A-9361-4F6C212D105B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E57DED7-218B-4E5A-9361-4F6C212D105B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7307D38A-D638-4D22-B0F1-46D63E840362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7307D38A-D638-4D22-B0F1-46D63E840362}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7307D38A-D638-4D22-B0F1-46D63E840362}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7307D38A-D638-4D22-B0F1-46D63E840362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F923903-5378-4B94-8AAE-CC3B90331C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F923903-5378-4B94-8AAE-CC3B90331C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F923903-5378-4B94-8AAE-CC3B90331C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F923903-5378-4B94-8AAE-CC3B90331C90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{755D36AB-2F1C-4C97-BD9F-BCE5F1DF5EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{755D36AB-2F1C-4C97-BD9F-BCE5F1DF5EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{755D36AB-2F1C-4C97-BD9F-BCE5F1DF5EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{755D36AB-2F1C-4C97-BD9F-BCE5F1DF5EA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
