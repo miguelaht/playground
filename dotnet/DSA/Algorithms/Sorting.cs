@@ -21,4 +21,25 @@ public class Sorting<T> where T: IComparable<T>
 
         return list;
     }
+
+    public IList<T> InsertionSort(IList<T> list)
+    {
+        var length = list.Count;
+
+        for (int i = 1; i < length; i++)
+        {
+            var key = list[i];
+            int j = i - 1;
+
+            while(j >= 0 && (key.CompareTo(list[j]) < 0))
+            {
+                list[j+1] = list[j];
+                j--;
+            }
+
+            list[j+1] = key;
+        }
+
+        return list;
+    }
 }
