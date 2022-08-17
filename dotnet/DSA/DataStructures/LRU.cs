@@ -14,7 +14,7 @@ public class Node<T>
     public Node<T>? Previous  { get; set; }
 }
 
-public class LRU<K, V>
+public class LRU<K, V> where K: notnull
 {
     public LRU(int capacity)
     {
@@ -35,7 +35,7 @@ public class LRU<K, V>
 
     public void Update(K key, V value)
     {
-        Node<V> node = new();
+        Node<V> node = null;
         if (this.Lookup.TryGetValue(key, out node))
         {
             this.Detach(node);

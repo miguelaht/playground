@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "DataStruc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructuresTests", "DataStructuresTests\DataStructuresTests.csproj", "{755D36AB-2F1C-4C97-BD9F-BCE5F1DF5EA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "Algorithms\Algorithms.csproj", "{0CAA60E9-9115-41CD-A45E-D29E62D722BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsTests", "AlgorithmsTests\AlgorithmsTests.csproj", "{D872C87D-AD78-4CB6-B1C0-56C3D5E4CF14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{755D36AB-2F1C-4C97-BD9F-BCE5F1DF5EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{755D36AB-2F1C-4C97-BD9F-BCE5F1DF5EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{755D36AB-2F1C-4C97-BD9F-BCE5F1DF5EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CAA60E9-9115-41CD-A45E-D29E62D722BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CAA60E9-9115-41CD-A45E-D29E62D722BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CAA60E9-9115-41CD-A45E-D29E62D722BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CAA60E9-9115-41CD-A45E-D29E62D722BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D872C87D-AD78-4CB6-B1C0-56C3D5E4CF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D872C87D-AD78-4CB6-B1C0-56C3D5E4CF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D872C87D-AD78-4CB6-B1C0-56C3D5E4CF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D872C87D-AD78-4CB6-B1C0-56C3D5E4CF14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -7,9 +7,9 @@ public class RingBuffer<T>
         this.Buffer = new T[capacity];
     }
 
-    int Head { get; set; }
-    int Tail { get; set; }
-    int Capacity { get; set; }
+    int Head { get; set; } = default;
+    int Tail { get; set; } = default;
+    int Capacity { get; set; } = default;
     T?[] Buffer { get; set; }
     public int Size { get; private set; }
 
