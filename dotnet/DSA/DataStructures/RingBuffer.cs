@@ -18,7 +18,7 @@ public class RingBuffer<T>
         return (this.Tail + index) % this.Capacity;
     }
 
-    public T this[int index]
+    public T? this[int index]
     {
         get
         {
