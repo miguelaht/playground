@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="FluentValidation" Version="11.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Database\" />
+    <None Remove="System.Data.SqlClient" />
+    <None Remove="Modules\" />
+    <None Remove="Modules\Ports\" />
+    <None Remove="Modules\Core\" />
+    <None Remove="Modules\Adapters\" />
+    <None Remove="Dapper" />
+    <None Remove="Modules\Endpoints\" />
+    <None Remove="Modules\Contracts\" />
+    <None Remove="Modules\Validators\" />
+    <None Remove="FluentValidation" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Database\" />
+    <Folder Include="Modules\" />
+    <Folder Include="Modules\Ports\" />
+    <Folder Include="Modules\Core\" />
+    <Folder Include="Modules\Adapters\" />
+    <Folder Include="Modules\Endpoints\" />
+    <Folder Include="Modules\Contracts\" />
+    <Folder Include="Modules\Validators\" />
+  </ItemGroup>
+</Project>
