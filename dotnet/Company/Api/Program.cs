@@ -1,5 +1,6 @@
 ﻿using Api.Database;
-using Api.Modules;
+using Api.Modules.Employees;
+using MediatR;
 
 namespace Api;
 
@@ -10,6 +11,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddSingleton<IDBConnectionFactory, DBConnectionFactory>();
+        builder.Services.AddMediatR(x => x.AsScoped(), typeof(Program));
 
         builder.Services.RegisterEmployeeServices();
 

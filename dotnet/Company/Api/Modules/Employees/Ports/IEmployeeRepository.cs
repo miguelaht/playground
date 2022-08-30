@@ -1,7 +1,6 @@
-﻿using System;
-using Api.Modules.Core;
+﻿using Api.Modules.Employees.Core;
 
-namespace Api.Modules.Ports
+namespace Api.Modules.Employees.Ports
 {
     public interface IEmployeeRepository
     {

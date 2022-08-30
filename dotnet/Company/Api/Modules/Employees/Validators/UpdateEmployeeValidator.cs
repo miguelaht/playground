@@ -1,10 +1,8 @@
-﻿using System;
-using Api.Modules.Contracts;
-using Api.Modules.Core;
-using Api.Modules.Ports;
+﻿using Api.Modules.Employees.Contracts;
+using Api.Modules.Employees.Ports;
 using FluentValidation;
 
-namespace Api.Modules.Validators
+namespace Api.Modules.Employees.Validators
 {
     public class UpdateEmployeeValidator : AbstractValidator<UpdateEmployeeRequest>
     {

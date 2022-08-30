@@ -1,10 +1,9 @@
-﻿using System;
-using Api.Database;
-using Api.Modules.Core;
-using Api.Modules.Ports;
+﻿using Api.Database;
+using Api.Modules.Employees.Core;
+using Api.Modules.Employees.Ports;
 using Dapper;
 
-namespace Api.Modules.Adapters
+namespace Api.Modules.Employees.Adapters
 {
     public class EmployeeRepository: IEmployeeRepository
     {

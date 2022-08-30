@@ -1,9 +1,9 @@
-﻿using System;
-using Api.Modules.Core;
+﻿using Api.Modules.Employees.Core;
+using MediatR;
 
-namespace Api.Modules.Contracts
+namespace Api.Modules.Employees.Contracts
 {
-    public class UpdateEmployeeRequest
+    public class UpdateEmployeeRequest : IRequest<IResult>
     {
         public int Id { get; set; }
         public string Email { get; set; }

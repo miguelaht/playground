@@ -1,5 +1,5 @@
-﻿using Api.Modules.Contracts;
-using Api.Modules.Core;
+﻿using Api.Modules.Employees.Contracts;
+using Api.Modules.Employees.Core;
 using Bogus;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net.Http.Json;
@@ -66,7 +66,10 @@ public class TestEmployeeEndpoints : IClassFixture<WebApplicationFactory<Api.Pro
         var viewEmployee = await response.Content.ReadFromJsonAsync<Employee>();
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Equal(createdUser, viewEmployee);
+        Assert.Equal(createdUser.FullName, viewEmployee.FullName);
+        Assert.Equal(createdUser.Id, viewEmployee.Id);
+        Assert.Equal(createdUser.Email, viewEmployee.Email);
+        Assert.Equal(DateOnly.FromDateTime(createdUser.BirthDate), DateOnly.FromDateTime(viewEmployee.BirthDate));
     }
 
     [Fact]

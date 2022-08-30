@@ -1,9 +1,9 @@
-﻿using System;
-using Api.Modules.Core;
+﻿using Api.Modules.Employees.Core;
+using MediatR;
 
-namespace Api.Modules.Contracts
+namespace Api.Modules.Employees.Contracts
 {
-    public class CreateEmployeeRequest
+    public class CreateEmployeeRequest: IRequest<IResult>
     {
         public string Email { get; set; }
         public string FullName { get; set; }
