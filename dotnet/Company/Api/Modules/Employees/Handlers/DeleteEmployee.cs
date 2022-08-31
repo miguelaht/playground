@@ -6,7 +6,7 @@ namespace Api.Modules.Employees.Handlers
 {
     public class DeleteEmployee : IRequestHandler<DeleteEmployeeRequest, IResult>
     {
-        readonly IEmployeeRepository employees;
+        private readonly IEmployeeRepository employees;
 
         public DeleteEmployee(IEmployeeRepository employees)
         {

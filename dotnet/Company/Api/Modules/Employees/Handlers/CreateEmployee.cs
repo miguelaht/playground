@@ -7,9 +7,9 @@ namespace Api.Modules.Employees.Handlers
 {
     public class CreateEmployee: IRequestHandler<CreateEmployeeRequest, IResult>
     {
-        readonly IEmployeeRepository employees;
-        readonly IValidator<CreateEmployeeRequest> validator;
-        readonly LinkGenerator linker;
+        private readonly IEmployeeRepository employees;
+        private readonly IValidator<CreateEmployeeRequest> validator;
+        private readonly LinkGenerator linker;
 
         public CreateEmployee(IEmployeeRepository employees, IValidator<CreateEmployeeRequest> validator, LinkGenerator linker)
         {

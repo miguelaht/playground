@@ -6,7 +6,7 @@ namespace Api.Modules.Employees.Handlers
 {
     public class ViewEmployee : IRequestHandler<ViewEmployeeRequest, IResult>
     {
-        readonly IEmployeeRepository employees;
+        private readonly IEmployeeRepository employees;
 
         public ViewEmployee(IEmployeeRepository employees)
         {

@@ -7,8 +7,8 @@ namespace Api.Modules.Employees.Handlers
 {
     public class UpdateEmployee : IRequestHandler<UpdateEmployeeRequest, IResult>
     {
-        readonly IEmployeeRepository employees;
-        readonly IValidator<UpdateEmployeeRequest> validator;
+        private readonly IEmployeeRepository employees;
+        private readonly IValidator<UpdateEmployeeRequest> validator;
 
         public UpdateEmployee(IEmployeeRepository employees, IValidator<UpdateEmployeeRequest> validator)
         {
