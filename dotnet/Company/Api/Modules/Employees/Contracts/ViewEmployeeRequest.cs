@@ -4,5 +4,5 @@ namespace Api.Modules.Employees.Contracts;
 
 public class ViewEmployeeRequest : IRequest<IResult>
 {
-    public int id;
+    public int Id { get; init; }
 }

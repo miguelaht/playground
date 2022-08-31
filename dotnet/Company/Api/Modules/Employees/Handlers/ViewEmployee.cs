@@ -15,7 +15,7 @@ namespace Api.Modules.Employees.Handlers
 
         public async Task<IResult> Handle(ViewEmployeeRequest request, CancellationToken cancellationToken)
         {
-            var emp = await employees.View(request.id);
+            var emp = await employees.View(request.Id);
 
             if (emp is null)
             {

@@ -31,7 +31,11 @@ namespace Api.Modules.Employees.Handlers
                 return Results.NotFound();
             }
 
-            var updatedEmp = await employees.Update(request.ToEmployee());
+            emp.FullName = request.FullName;
+            emp.Email = request.Email;
+            emp.BirthDate = request.BirthDate;
+
+            var updatedEmp = await employees.Update(emp);
 
             if (updatedEmp is null)
             {

@@ -32,7 +32,7 @@ namespace Api.Modules.Employees
                 .ProducesProblem(StatusCodes.Status400BadRequest);
 
             endpoints.MapGet("/employees/{id:int}", (IMediator mediator, int id)
-                    => mediator.Send(new ViewEmployeeRequest { id = id }))
+                    => mediator.Send(new ViewEmployeeRequest { Id = id }))
                 .WithTags("Employees")
                 .WithName(nameof(ViewEmployee))
                 .Produces<Employee>(StatusCodes.Status200OK)
@@ -46,14 +46,18 @@ namespace Api.Modules.Employees
                 .ProducesProblem(StatusCodes.Status404NotFound);
 
             endpoints.MapDelete("/employees/{id:int}", (IMediator mediator, int id)
-                    => mediator.Send(new DeleteEmployeeRequest { id = id }))
+                    => mediator.Send(new DeleteEmployeeRequest { Id = id }))
                 .WithTags("Employees")
                 .WithName(nameof(DeleteEmployee))
                 .Produces(StatusCodes.Status200OK)
                 .ProducesProblem(StatusCodes.Status404NotFound);
 
-            endpoints.MapPut("/employees", (IMediator mediator, UpdateEmployeeRequest request)
-                    => mediator.Send(request))
+            endpoints.MapPut("/employees/{id:int}", (IMediator mediator, int id, UpdateEmployeeRequest request)
+                    =>
+            {
+                if (id != request.Id) return Results.NotFound();
+                return mediator.Send(request).Result;
+            })
                 .WithTags("Employees")
                 .WithName(nameof(UpdateEmployee))
                 .Produces<Employee>(StatusCodes.Status200OK)

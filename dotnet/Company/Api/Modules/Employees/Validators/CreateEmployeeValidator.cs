@@ -22,7 +22,7 @@ namespace Api.Modules.Employees.Validators
 
                     return emp is null;
                 })
-                .WithMessage("Email must be unique");
+                .WithMessage($"{nameof(CreateEmployeeRequest.Email)} must be unique");
         }
     }
 }

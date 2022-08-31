@@ -3,11 +3,11 @@ using MediatR;
 
 namespace Api.Modules.Employees.Contracts
 {
-    public class CreateEmployeeRequest: IRequest<IResult>
+    public class CreateEmployeeRequest : IRequest<IResult>
     {
-        public string Email { get; set; }
-        public string FullName { get; set; }
-        public DateTime BirthDate { get; set; }
+        public string Email { get; init; } = default!;
+        public string FullName { get; init; } = default!;
+        public DateTime BirthDate { get; init; }
 
         public Employee ToEmployee()
         {

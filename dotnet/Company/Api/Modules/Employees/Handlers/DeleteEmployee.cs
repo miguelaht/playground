@@ -15,7 +15,7 @@ namespace Api.Modules.Employees.Handlers
 
         public async Task<IResult> Handle(DeleteEmployeeRequest request, CancellationToken cancellationToken)
         {
-            var emp = await employees.Delete(request.id);
+            var emp = await employees.Delete(request.Id);
 
             if (!emp)
             {
