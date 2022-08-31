@@ -5,7 +5,7 @@ using Dapper;
 
 namespace Api.Modules.Employees.Adapters
 {
-    public class EmployeeRepository: IEmployeeRepository
+    public class EmployeeRepository : IEmployeeRepository
     {
         private readonly IDBConnectionFactory _conn;
 

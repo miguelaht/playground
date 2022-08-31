@@ -52,11 +52,11 @@ namespace Api.Modules.Employees
                 .Produces(StatusCodes.Status200OK)
                 .ProducesProblem(StatusCodes.Status404NotFound);
 
-            endpoints.MapPut("/employees/{id:int}", (IMediator mediator, int id, UpdateEmployeeRequest request)
-                    =>
+            endpoints.MapPut("/employees/{id:int}", (IMediator mediator, int id, UpdateEmployeeRequest request) =>
             {
-                if (id != request.Id) return Results.NotFound();
-                return mediator.Send(request).Result;
+                return id != request.Id
+                ? Results.NotFound()
+                : mediator.Send(request).Result;
             })
                 .WithTags("Employees")
                 .WithName(nameof(UpdateEmployee))

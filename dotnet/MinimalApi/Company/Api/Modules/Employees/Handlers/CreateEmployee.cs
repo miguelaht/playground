@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Api.Modules.Employees.Handlers
 {
-    public class CreateEmployee: IRequestHandler<CreateEmployeeRequest, IResult>
+    public class CreateEmployee : IRequestHandler<CreateEmployeeRequest, IResult>
     {
         private readonly IEmployeeRepository employees;
         private readonly IValidator<CreateEmployeeRequest> validator;

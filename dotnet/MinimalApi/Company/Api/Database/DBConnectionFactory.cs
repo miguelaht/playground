@@ -9,7 +9,7 @@ namespace Api.Database
         Task<IDbConnection> CreateConnectionAsync();
     }
 
-    public class DBConnectionFactory: IDBConnectionFactory
+    public class DBConnectionFactory : IDBConnectionFactory
     {
         private readonly IConfiguration _confiuration;
 
