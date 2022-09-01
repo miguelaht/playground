@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace Api.Database
@@ -12,16 +11,17 @@ namespace Api.Database
     public class DBConnectionFactory : IDBConnectionFactory
     {
         private readonly IConfiguration _confiuration;
-
-        public DBConnectionFactory(IConfiguration confiuration)
+        private readonly string _connectionStringKey;
+        public DBConnectionFactory(IConfiguration confiuration, string connectionStringKey)
         {
             _confiuration = confiuration;
+            _connectionStringKey = connectionStringKey;
         }
 
         public async Task<IDbConnection> CreateConnectionAsync()
         {
             var sqlConnection = new SqlConnection();
-            sqlConnection.ConnectionString = _confiuration.GetConnectionString("main");
+            sqlConnection.ConnectionString = _confiuration.GetConnectionString(_connectionStringKey);
             await sqlConnection.OpenAsync();
 
             return sqlConnection;

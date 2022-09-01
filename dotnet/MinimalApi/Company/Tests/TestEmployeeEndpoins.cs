@@ -1,36 +1,31 @@
 ﻿using Api.Modules.Employees.Contracts;
 using Api.Modules.Employees.Core;
 using Bogus;
-using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net.Http.Json;
 using System.Net;
 
 namespace Tests;
 
-public class TestEmployeeEndpoints : IClassFixture<WebApplicationFactory<Api.Program>>
+public class TestEmployeeEndpoints
 {
+    private readonly AppEndpointTest app;
     private readonly HttpClient client;
+    private readonly Faker<CreateEmployeeRequest> generator;
 
-    public TestEmployeeEndpoints(WebApplicationFactory<Api.Program> app)
+    public TestEmployeeEndpoints()
     {
+        app = new();
         client = app.CreateClient();
-    }
 
-    private Faker<CreateEmployeeRequest> createEmployeeFaker()
-    {
-        var f = new Faker<CreateEmployeeRequest>();
-
-        f.RuleFor(e => e.FullName, f => f.Person.FullName);
-        f.RuleFor(e => e.Email, f => f.Person.Email);
-        f.RuleFor(e => e.BirthDate, f => f.Person.DateOfBirth);
-
-        return f;
+        generator = new();
+        generator.RuleFor(e => e.FullName, f => f.Person.FullName);
+        generator.RuleFor(e => e.Email, f => f.Person.Email);
+        generator.RuleFor(e => e.BirthDate, f => f.Person.DateOfBirth);
     }
 
     [Fact]
     public async Task TestCreateEmployee_ValidData()
     {
-        var generator = createEmployeeFaker();
         var newEmployee = generator.Generate();
 
         var response = await client.PostAsJsonAsync("/employees", newEmployee);
@@ -38,7 +33,7 @@ public class TestEmployeeEndpoints : IClassFixture<WebApplicationFactory<Api.Pro
 
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
         Assert.NotNull(createdEmployee);
-        Assert.Equal(newEmployee.FullName, createdEmployee.FullName);
+        Assert.Equal(newEmployee.FullName, createdEmployee!.FullName);
         Assert.Equal(newEmployee.Email, createdEmployee.Email);
         Assert.Equal(newEmployee.BirthDate.ToString(), createdEmployee.BirthDate.ToString());
     }
@@ -55,7 +50,6 @@ public class TestEmployeeEndpoints : IClassFixture<WebApplicationFactory<Api.Pro
     [Fact]
     public async Task TestViewEmployee_ValidId()
     {
-        var generator = createEmployeeFaker();
         var newEmployee = generator.Generate();
 
         var response = await client.PostAsJsonAsync("/employees", newEmployee);
@@ -66,7 +60,7 @@ public class TestEmployeeEndpoints : IClassFixture<WebApplicationFactory<Api.Pro
         var viewEmployee = await response.Content.ReadFromJsonAsync<Employee>();
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Equal(createdEmployee.FullName, viewEmployee.FullName);
+        Assert.Equal(createdEmployee!.FullName, viewEmployee!.FullName);
         Assert.Equal(createdEmployee.Id, viewEmployee.Id);
         Assert.Equal(createdEmployee.Email, viewEmployee.Email);
         Assert.Equal(DateOnly.FromDateTime(createdEmployee.BirthDate), DateOnly.FromDateTime(viewEmployee.BirthDate));
@@ -75,7 +69,6 @@ public class TestEmployeeEndpoints : IClassFixture<WebApplicationFactory<Api.Pro
     [Fact]
     public async Task TestViewEmployee_NotValidId()
     {
-        var generator = createEmployeeFaker();
         var newEmployee = generator.Generate();
 
         var response = await client.PostAsJsonAsync("/employees", newEmployee);
@@ -91,7 +84,6 @@ public class TestEmployeeEndpoints : IClassFixture<WebApplicationFactory<Api.Pro
     [Fact]
     public async Task TestDeleteEmployee_ValidId()
     {
-        var generator = createEmployeeFaker();
         var newEmployee = generator.Generate();
 
         var response = await client.PostAsJsonAsync("/employees", newEmployee);
@@ -106,7 +98,6 @@ public class TestEmployeeEndpoints : IClassFixture<WebApplicationFactory<Api.Pro
     [Fact]
     public async Task TestDeleteEmployee_NotValidId()
     {
-        var generator = createEmployeeFaker();
         var newEmployee = generator.Generate();
 
         var response = await client.PostAsJsonAsync("/employees", newEmployee);
