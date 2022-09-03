@@ -7,6 +7,7 @@ namespace Api.Modules.Employees.Validators
     public class UpdateEmployeeValidator : AbstractValidator<UpdateEmployeeRequest>
     {
         private readonly IEmployeeRepository _employees;
+
         public UpdateEmployeeValidator(IEmployeeRepository employees)
         {
             _employees = employees;
@@ -16,15 +17,18 @@ namespace Api.Modules.Employees.Validators
             RuleFor(e => e.Email)
                 .NotEmpty()
                 .EmailAddress()
-                .MustAsync(async (emp, email, _) =>
-                {
-                    var exists = await _employees.ViewByEmail(email);
+                .MustAsync(
+                    async (emp, email, _) =>
+                    {
+                        var exists = await _employees.ViewByEmail(email);
 
-                    if (exists is null || exists.Id == emp.Id) return true;
+                        if (exists is null || exists.Id == emp.Id)
+                            return true;
 
-                    return false;
-                }).WithMessage("Email must be unique");
+                        return false;
+                    }
+                )
+                .WithMessage("Email must be unique");
         }
     }
 }
-

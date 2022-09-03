@@ -11,8 +11,12 @@ namespace Api.Modules.Employees.Contracts
 
         public Employee ToEmployee()
         {
-            return new Employee { Email = this.Email, FullName = this.FullName, BirthDate = this.BirthDate };
+            return new Employee
+            {
+                Email = this.Email,
+                FullName = this.FullName,
+                BirthDate = this.BirthDate
+            };
         }
     }
 }
-

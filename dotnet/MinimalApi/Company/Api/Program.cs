@@ -2,12 +2,12 @@
 using Api.Modules.Employees;
 using MediatR;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IDBConnectionFactory>(provider =>
-        new DBConnectionFactory(builder.Configuration, "main")
-    );
+builder.Services.AddSingleton<IDBConnectionFactory>(
+    provider => new DBConnectionFactory(builder.Configuration, "main")
+);
+
 builder.Services.AddMediatR(x => x.AsScoped(), typeof(Program));
 
 builder.Services.RegisterEmployeeServices();

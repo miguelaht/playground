@@ -7,6 +7,7 @@ namespace Api.Modules.Employees.Validators
     public class CreateEmployeeValidator : AbstractValidator<CreateEmployeeRequest>
     {
         private readonly IEmployeeRepository _employees;
+
         public CreateEmployeeValidator(IEmployeeRepository employees)
         {
             _employees = employees;
@@ -16,14 +17,15 @@ namespace Api.Modules.Employees.Validators
             RuleFor(e => e.Email)
                 .NotEmpty()
                 .EmailAddress()
-                .MustAsync(async (_, email, _) =>
-                {
-                    var emp = await _employees.ViewByEmail(email);
+                .MustAsync(
+                    async (_, email, _) =>
+                    {
+                        var emp = await _employees.ViewByEmail(email);
 
-                    return emp is null;
-                })
+                        return emp is null;
+                    }
+                )
                 .WithMessage($"{nameof(CreateEmployeeRequest.Email)} must be unique");
         }
     }
 }
-

@@ -11,14 +11,21 @@ namespace Api.Modules.Employees.Handlers
         private readonly IValidator<CreateEmployeeRequest> validator;
         private readonly LinkGenerator linker;
 
-        public CreateEmployee(IEmployeeRepository employees, IValidator<CreateEmployeeRequest> validator, LinkGenerator linker)
+        public CreateEmployee(
+            IEmployeeRepository employees,
+            IValidator<CreateEmployeeRequest> validator,
+            LinkGenerator linker
+        )
         {
             this.employees = employees;
             this.validator = validator;
             this.linker = linker;
         }
 
-        public async Task<IResult> Handle(CreateEmployeeRequest request, CancellationToken cancellationToken)
+        public async Task<IResult> Handle(
+            CreateEmployeeRequest request,
+            CancellationToken cancellationToken
+        )
         {
             var validationResult = await validator.ValidateAsync(request);
             if (!validationResult.IsValid)
@@ -33,8 +40,10 @@ namespace Api.Modules.Employees.Handlers
                 return Results.Problem();
             }
 
-            return Results.Created(linker.GetPathByName(nameof(ViewEmployee), values: new { id = emp.Id })!, emp);
+            return Results.Created(
+                linker.GetPathByName(nameof(ViewEmployee), values: new { id = emp.Id })!,
+                emp
+            );
         }
     }
 }
-

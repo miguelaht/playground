@@ -10,13 +10,19 @@ namespace Api.Modules.Employees.Handlers
         private readonly IEmployeeRepository employees;
         private readonly IValidator<UpdateEmployeeRequest> validator;
 
-        public UpdateEmployee(IEmployeeRepository employees, IValidator<UpdateEmployeeRequest> validator)
+        public UpdateEmployee(
+            IEmployeeRepository employees,
+            IValidator<UpdateEmployeeRequest> validator
+        )
         {
             this.employees = employees;
             this.validator = validator;
         }
 
-        public async Task<IResult> Handle(UpdateEmployeeRequest request, CancellationToken cancellationToken)
+        public async Task<IResult> Handle(
+            UpdateEmployeeRequest request,
+            CancellationToken cancellationToken
+        )
         {
             var validationResult = await validator.ValidateAsync(request);
             if (!validationResult.IsValid)
@@ -46,4 +52,3 @@ namespace Api.Modules.Employees.Handlers
         }
     }
 }
-

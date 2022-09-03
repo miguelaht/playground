@@ -41,7 +41,12 @@ public class TestEmployeeEndpoints
     [Fact]
     public async Task TestCreateEmployee_NotValidData()
     {
-        var newEmp = new CreateEmployeeRequest { FullName = "asd", Email = "asd", BirthDate = DateTime.Now };
+        var newEmp = new CreateEmployeeRequest
+        {
+            FullName = "asd",
+            Email = "asd",
+            BirthDate = DateTime.Now
+        };
         var response = await client.PostAsJsonAsync("/employees", newEmp);
 
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -63,7 +68,10 @@ public class TestEmployeeEndpoints
         Assert.Equal(createdEmployee!.FullName, viewEmployee!.FullName);
         Assert.Equal(createdEmployee.Id, viewEmployee.Id);
         Assert.Equal(createdEmployee.Email, viewEmployee.Email);
-        Assert.Equal(DateOnly.FromDateTime(createdEmployee.BirthDate), DateOnly.FromDateTime(viewEmployee.BirthDate));
+        Assert.Equal(
+            DateOnly.FromDateTime(createdEmployee.BirthDate),
+            DateOnly.FromDateTime(viewEmployee.BirthDate)
+        );
     }
 
     [Fact]

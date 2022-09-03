@@ -10,22 +10,24 @@ namespace Api.Database
 
     public class DBConnectionFactory : IDBConnectionFactory
     {
-        private readonly IConfiguration _confiuration;
+        private readonly IConfiguration _configuration;
         private readonly string _connectionStringKey;
-        public DBConnectionFactory(IConfiguration confiuration, string connectionStringKey)
+
+        public DBConnectionFactory(IConfiguration configuration, string connectionStringKey)
         {
-            _confiuration = confiuration;
+            _configuration = configuration;
             _connectionStringKey = connectionStringKey;
         }
 
         public async Task<IDbConnection> CreateConnectionAsync()
         {
             var sqlConnection = new SqlConnection();
-            sqlConnection.ConnectionString = _confiuration.GetConnectionString(_connectionStringKey);
+            sqlConnection.ConnectionString = _configuration.GetConnectionString(
+                _connectionStringKey
+            );
             await sqlConnection.OpenAsync();
 
             return sqlConnection;
         }
     }
 }
-

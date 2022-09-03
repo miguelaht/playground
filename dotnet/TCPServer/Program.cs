@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using System.Net.Sockets;
-using System.Text;
 
 public class Server
 {
@@ -20,7 +19,7 @@ public class Server
             while (true)
             {
                 TcpClient client = listener.AcceptTcpClient();
-                Thread t = new(new ParameterizedThreadStart(Handle));
+                Thread t = new(new ParameterizedThreadStart(Handle!));
                 t.Start(client);
             }
         }

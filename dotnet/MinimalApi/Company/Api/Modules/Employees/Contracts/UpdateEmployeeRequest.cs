@@ -10,4 +10,3 @@ namespace Api.Modules.Employees.Contracts
         public DateTime BirthDate { get; init; }
     }
 }
-

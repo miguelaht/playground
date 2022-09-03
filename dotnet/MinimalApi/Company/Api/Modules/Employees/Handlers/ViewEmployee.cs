@@ -13,7 +13,10 @@ namespace Api.Modules.Employees.Handlers
             this.employees = employees;
         }
 
-        public async Task<IResult> Handle(ViewEmployeeRequest request, CancellationToken cancellationToken)
+        public async Task<IResult> Handle(
+            ViewEmployeeRequest request,
+            CancellationToken cancellationToken
+        )
         {
             var emp = await employees.View(request.Id);
 
@@ -26,4 +29,3 @@ namespace Api.Modules.Employees.Handlers
         }
     }
 }
-

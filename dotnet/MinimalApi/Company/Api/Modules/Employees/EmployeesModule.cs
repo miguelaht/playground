@@ -21,43 +21,63 @@ namespace Api.Modules.Employees
             return services;
         }
 
-        public static IEndpointRouteBuilder RegisterEmployeeEndpoints(this IEndpointRouteBuilder endpoints)
+        public static IEndpointRouteBuilder RegisterEmployeeEndpoints(
+            this IEndpointRouteBuilder endpoints
+        )
         {
-            endpoints.MapPost("/employees", (IMediator mediator, CreateEmployeeRequest request)
-                    => mediator.Send(request))
+            endpoints
+                .MapPost(
+                    "/employees",
+                    (IMediator mediator, CreateEmployeeRequest request) => mediator.Send(request)
+                )
                 .WithTags("Employees")
                 .WithName(nameof(CreateEmployee))
                 .Produces<Employee>(StatusCodes.Status200OK)
                 .ProducesProblem(StatusCodes.Status500InternalServerError)
                 .ProducesProblem(StatusCodes.Status400BadRequest);
 
-            endpoints.MapGet("/employees/{id:int}", (IMediator mediator, int id)
-                    => mediator.Send(new ViewEmployeeRequest { Id = id }))
+            endpoints
+                .MapGet(
+                    "/employees/{id:int}",
+                    (IMediator mediator, int id) =>
+                        mediator.Send(new ViewEmployeeRequest { Id = id })
+                )
                 .WithTags("Employees")
                 .WithName(nameof(ViewEmployee))
                 .Produces<Employee>(StatusCodes.Status200OK)
                 .ProducesProblem(StatusCodes.Status404NotFound);
 
-            endpoints.MapGet("/employees", (IMediator mediator)
-                    => mediator.Send(new GetEmployeesRequest()))
+            endpoints
+                .MapGet(
+                    "/employees",
+                    (IMediator mediator) => mediator.Send(new GetEmployeesRequest())
+                )
                 .WithTags("Employees")
                 .WithName(nameof(GetEmployees))
                 .Produces<Employee>(StatusCodes.Status200OK)
                 .ProducesProblem(StatusCodes.Status404NotFound);
 
-            endpoints.MapDelete("/employees/{id:int}", (IMediator mediator, int id)
-                    => mediator.Send(new DeleteEmployeeRequest { Id = id }))
+            endpoints
+                .MapDelete(
+                    "/employees/{id:int}",
+                    (IMediator mediator, int id) =>
+                        mediator.Send(new DeleteEmployeeRequest { Id = id })
+                )
                 .WithTags("Employees")
                 .WithName(nameof(DeleteEmployee))
                 .Produces(StatusCodes.Status200OK)
                 .ProducesProblem(StatusCodes.Status404NotFound);
 
-            endpoints.MapPut("/employees/{id:int}", (IMediator mediator, int id, UpdateEmployeeRequest request) =>
-            {
-                return id != request.Id
-                ? Results.NotFound()
-                : mediator.Send(request).Result;
-            })
+            endpoints
+                .MapPut(
+                    "/employees/{id:int}",
+                    (IMediator mediator, int id, UpdateEmployeeRequest request) =>
+                    {
+                        return id != request.Id
+                            ? Results.NotFound()
+                            : mediator.Send(request).Result;
+                    }
+                )
                 .WithTags("Employees")
                 .WithName(nameof(UpdateEmployee))
                 .Produces<Employee>(StatusCodes.Status200OK)
@@ -67,4 +87,3 @@ namespace Api.Modules.Employees
         }
     }
 }
-

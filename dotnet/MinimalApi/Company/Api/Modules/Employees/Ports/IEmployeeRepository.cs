@@ -12,4 +12,3 @@ namespace Api.Modules.Employees.Ports
         Task<bool> Delete(int id);
     }
 }
-

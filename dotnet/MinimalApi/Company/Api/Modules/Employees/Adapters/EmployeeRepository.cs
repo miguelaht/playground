@@ -18,7 +18,8 @@ namespace Api.Modules.Employees.Adapters
         {
             using (var connection = await _conn.CreateConnectionAsync())
             {
-                var query = @"INSERT INTO Employees
+                var query =
+                    @"INSERT INTO Employees
                                 (FullName, BirthDate, Email)
                                 OUTPUT INSERTED.Id
                                 VALUES (@fullName, @birthDate, @email)";
@@ -65,7 +66,8 @@ namespace Api.Modules.Employees.Adapters
         {
             using (var connection = await _conn.CreateConnectionAsync())
             {
-                var query = @"UPDATE Employees
+                var query =
+                    @"UPDATE Employees
                                 SET
                                     FullName=@fullName,
                                     BirthDate=@birthDate,
@@ -87,13 +89,17 @@ namespace Api.Modules.Employees.Adapters
         {
             using (var connection = await _conn.CreateConnectionAsync())
             {
-                var query = @"SELECT Id, FullName, BirthDate, Email
+                var query =
+                    @"SELECT Id, FullName, BirthDate, Email
                                 FROM Employees
                                 WHERE Id=@id";
                 var parameters = new DynamicParameters();
                 parameters.Add("@id", id);
 
-                var employee = await connection.QueryFirstOrDefaultAsync<Employee>(query, parameters);
+                var employee = await connection.QueryFirstOrDefaultAsync<Employee>(
+                    query,
+                    parameters
+                );
 
                 return employee;
             }
@@ -103,17 +109,20 @@ namespace Api.Modules.Employees.Adapters
         {
             using (var connection = await _conn.CreateConnectionAsync())
             {
-                var query = @"SELECT Id, FullName, BirthDate, Email
+                var query =
+                    @"SELECT Id, FullName, BirthDate, Email
                                 FROM Employees
                                 WHERE Email=@email";
                 var parameters = new DynamicParameters();
                 parameters.Add("@email", email);
 
-                var employee = await connection.QueryFirstOrDefaultAsync<Employee>(query, parameters);
+                var employee = await connection.QueryFirstOrDefaultAsync<Employee>(
+                    query,
+                    parameters
+                );
 
                 return employee;
             }
         }
     }
 }
-

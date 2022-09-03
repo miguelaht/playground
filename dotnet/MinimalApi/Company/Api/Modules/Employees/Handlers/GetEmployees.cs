@@ -12,7 +12,11 @@ namespace Api.Modules.Employees.Handlers
         {
             this.employees = employees;
         }
-        public async Task<IResult> Handle(GetEmployeesRequest request, CancellationToken cancellationToken)
+
+        public async Task<IResult> Handle(
+            GetEmployeesRequest request,
+            CancellationToken cancellationToken
+        )
         {
             var emps = await employees.GetAll();
 
@@ -25,4 +29,3 @@ namespace Api.Modules.Employees.Handlers
         }
     }
 }
-
